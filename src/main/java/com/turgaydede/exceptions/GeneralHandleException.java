@@ -13,4 +13,10 @@ public class GeneralHandleException {
         String message = exception.getMessage();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<String> CompanyNotFoundException(CompanyNotFoundException exception) {
+        String message = exception.getMessage();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
 }
