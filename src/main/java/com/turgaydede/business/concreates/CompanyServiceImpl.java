@@ -5,19 +5,23 @@ import com.turgaydede.entities.Company;
 import com.turgaydede.entities.dtos.CompanyDto;
 import com.turgaydede.exceptions.CustomerNotFoundException;
 import com.turgaydede.repositories.CompanyRepository;
+import com.turgaydede.util.converter.CompanyDtoConverter;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
     private final ModelMapper modelMapper;
+    private final CompanyDtoConverter companyDtoConverter;
 
-    public CompanyServiceImpl(CompanyRepository companyRepository, ModelMapper modelMapper) {
+    public CompanyServiceImpl(CompanyRepository companyRepository, ModelMapper modelMapper, CompanyDtoConverter companyDtoConverter) {
         this.companyRepository = companyRepository;
         this.modelMapper = modelMapper;
+        this.companyDtoConverter = companyDtoConverter;
     }
 
     @Override
@@ -41,7 +45,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<CompanyDto> getAll() {
-        return (List<CompanyDto>) companyRepository.findAll().stream().map(company -> modelMapper.map(company,CompanyDto.class));
+        return companyRepository.findAll().stream().map(companyDtoConverter::convert).collect(Collectors.toList());
     }
 
     @Override

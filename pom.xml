@@ -17,6 +17,12 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+        <!-- swagger open-api-3.0-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.5</version>
+        </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>

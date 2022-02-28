@@ -1,6 +1,7 @@
 package com.turgaydede.api.controller;
 
 import com.turgaydede.business.abstracts.CustomerService;
+import com.turgaydede.entities.dtos.CompanyDto;
 import com.turgaydede.entities.dtos.CustomerDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
