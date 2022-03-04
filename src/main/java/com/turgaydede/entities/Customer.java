@@ -21,13 +21,13 @@ public class Customer implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "company_id")
-    private int companyId;
-
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

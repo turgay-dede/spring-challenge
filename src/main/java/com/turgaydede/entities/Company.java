@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +24,7 @@ public class Company implements Serializable {
 
     @Column(name = "company_name")
     private String companyName;
+
+    @OneToMany(mappedBy = "company",cascade = CascadeType.ALL)
+    private List<Customer> customers;
 }

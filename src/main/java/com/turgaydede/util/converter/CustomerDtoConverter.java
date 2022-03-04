@@ -9,7 +9,7 @@ public class CustomerDtoConverter {
     public CustomerDto convert(Customer customer) {
         return CustomerDto.builder()
                 .id(customer.getId())
-                .companyId(customer.getCompanyId())
+                .companyId(customer.getCompany().getId())
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
                 .build();
